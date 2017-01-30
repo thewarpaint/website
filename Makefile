@@ -16,13 +16,17 @@ build: test-jekyll
 	@jekyll build
 
 serve-production: test-jekyll
+	@make crowdin-download
 	@JEKYLL_ENV=production jekyll serve
 
 build-production: test-jekyll
+	@make crowdin-download
 	@JEKYLL_ENV=production jekyll build
 
-crowdin-sync: test-crowdin
+crowdin-upload: test-crowdin
 	@crowdin-cli upload sources --auto-update -b master
+
+crowdin-download: test-crowdin
 	@crowdin-cli download -b master
 
 ###
