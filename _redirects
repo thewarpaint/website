@@ -25,8 +25,8 @@ layout: null
 {% assign urls_filtered = "" | split: "," | pop %}
 
 {% for url in urls_sorted %}
-  {% assign first_twelve_chars = url | slice: 0, 12 %}
-  {% if first_twelve_chars == "/lang/en/" %}
+  {% assign first_nine_chars = url | slice: 0, 9 %}
+  {% if first_nine_chars == "/lang/en/" %}
     {% assign url_stripped = url | replace: "/lang/en/", "/" %}
     {% assign urls_filtered = urls_filtered | push: url_stripped %}
   {% endif %}
